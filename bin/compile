@@ -1,0 +1,25 @@
+#!/bin/sh
+
+
+arrow() {
+  echo '----->' "$@"
+}
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+
+BUILD_DIR=$1
+arrow "Installing driver config"
+mkdir -p "${BUILD_DIR}/.apt/usr/lib/odbc/conf/" | indent
+cp libmsodbcsql-17.5.so.2.1 "${BUILD_DIR}/.apt/usr/lib/libmsodbcsql-17.5.so.2.1" | indent
+cp odbcinst.ini "${BUILD_DIR}/.apt/usr/lib/odbc/conf/odbcinst.ini" | indent
+
+
+arrow "Adding profile.d script"
+mkdir -p "${BUILD_DIR}/.profile.d" | indent
+cp .profile.d/configure-odbc.sh "${BUILD_DIR}/.profile.d" | indent
+
+
+arrow "FINISH"
