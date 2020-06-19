@@ -13,7 +13,7 @@ indent() {
 BUILD_DIR=$1
 arrow "Installing driver config"
 mkdir -p "${BUILD_DIR}/.apt/usr/lib/odbc/conf/" | indent
-cp libmsodbcsql-17.5.so.2.1 "/opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.5.so.2.1" | indent
+cp libmsodbcsql-17.5.so.2.1 "${BUILD_DIR}/.apt/usr/lib/libmsodbcsql-17.5.so.2.1" | indent
 cp odbcinst.ini "${BUILD_DIR}/.apt/usr/lib/odbc/conf/odbcinst.ini" | indent
 
 
